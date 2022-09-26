@@ -11,6 +11,7 @@ LiquidCrystal_I2C lcd(0x20, 16, 2);
 // HX711 circuit wiring
 const int LOADCELL_DOUT_PIN = 2;
 const int LOADCELL_SCK_PIN = 3;
+const float CALIBRATION_FACTOR = 31.457;
 int count;
  
 HX711 scale;
@@ -28,7 +29,7 @@ void setup() {
   scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
  
   scale.tare();               // reset the scale to 0
-  scale.set_scale(31.457);
+  scale.set_scale(CALIBRATION_FACTOR);
 }
  
 void loop() {
