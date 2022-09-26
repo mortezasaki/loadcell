@@ -12,6 +12,7 @@ LiquidCrystal_I2C lcd(0x20, 16, 2);
 const int LOADCELL_DOUT_PIN = 2;
 const int LOADCELL_SCK_PIN = 3;
 const float CALIBRATION_FACTOR = 31.457;
+
 int count;
  
 HX711 scale;
@@ -42,10 +43,11 @@ void loop() {
   lcd.setCursor(0, 1);
   lcd.print(count);
 
+  delay(100);
+
   if (kilograms >= 2.0)
   {
     count++;
     EEPROM.write(0, count);
   }
-  delay(100);
 }
