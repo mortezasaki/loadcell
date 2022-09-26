@@ -14,6 +14,7 @@ const int LOADCELL_SCK_PIN = 3;
 const float CALIBRATION_FACTOR = 31.457;
 
 int count;
+bool isMaxKG = false;
  
 HX711 scale;
  
@@ -45,9 +46,11 @@ void loop() {
 
   delay(100);
 
-  if (kilograms >= 2.0)
-  {
+  if (kilograms >= 2.0 && !isMaxKG) {
     count++;
     EEPROM.write(0, count);
+    isMaxKG = true;
+  } else if (kilograms == 0.0) {
+    isMaxKG = false;
   }
 }
