@@ -11,8 +11,6 @@ LiquidCrystal_I2C lcd(0x20, 16, 2);
 // HX711 circuit wiring
 const int LOADCELL_DOUT_PIN = 2;
 const int LOADCELL_SCK_PIN = 3;
-const int add_btn_pin = 4;
-float calibration_factor = -100000; // This value is obtained using the SparkFun_HX711_Calibration sketch
 int count;
  
 HX711 scale;
